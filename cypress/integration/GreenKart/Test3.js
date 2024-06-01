@@ -15,6 +15,28 @@ describe("My Third Test Suite", function()
 
         //Select value from static dropdown
         cy.get('select').select('option2').should('have.value', 'option2')
+
+        //Select value from Dynamic dropdown
+        cy.get('#autocomplete').type('ind')
+        cy.get('.ui-menu-item div').each(($e1, index, $list) => {
+            if($e1.text()==="India")
+                {
+                    cy.wrap($e1).click()
+                }
+        })
+        cy.get('#autocomplete').should('have.value', 'India')
+    
+        /* cy.get('#autocomplete').clear()
+
+        cy.get('#autocomplete').type('Bangla')
+        cy.get('.ui-menu-item div').each(($el, index, $list) => {
+            if($el.text()==="Bangladesh")
+                {
+                    cy.wrap($el).click()
+                }
+
+        }) */
+
     })
     
 })
