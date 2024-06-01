@@ -37,6 +37,17 @@ describe("My Third Test Suite", function()
 
         }) */
 
+        //Deal with visibility and invisibility
+        cy.get('#displayed-text').should('be.visible')
+        cy.get('#hide-textbox').click()
+        cy.get('#displayed-text').should('not.be.visible')
+        cy.get('#show-textbox').click()
+        cy.get('#displayed-text').should('be.visible')
+
+        //Select check boxes
+        cy.get('[value="radio2"]').check().should('be.checked')
+
+
     })
     
 })
